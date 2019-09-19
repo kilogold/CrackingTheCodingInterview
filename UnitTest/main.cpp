@@ -1,24 +1,19 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "..\ArraysAndStrings\IsUnique.h"
+#include "Exercises/ArraysAndStrings.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace UnitTest
+namespace Excercises
 {		
-	TEST_CLASS(UnitTest__ArraysAndStrings)
+	TEST_CLASS(ArraysAndStrings)
 	{
 	public:
-		
-		TEST_METHOD(ArraysAndStrings_IsUnique)
+
+		TEST_METHOD(IsUnique)
 		{
-        Assert::IsFalse(CTCI::IsUnique("!@#$1234Q!W@E#E$R"), L"Not unique.", LINE_INFO());
-        Assert::IsTrue(CTCI::IsUnique("1234Q!W@E$R"), L"Not unique.", LINE_INFO());
-    }
-    TEST_METHOD(ArraysAndStrings_IsUnique_Recursive)
-    {
-        Assert::IsTrue(CTCI::IsUnique_Recursive("E$R"), L"Not unique.", LINE_INFO());
-        Assert::IsFalse(CTCI::IsUnique_Recursive("!@#$1234Q!W@E#E$R"), L"Not unique.", LINE_INFO());
-    }
+			Assert::IsFalse(CTCI::IsUnique("!@#$1234Q!W@E#E$R"), L"Not unique.", LINE_INFO());
+			Assert::IsTrue(CTCI::IsUnique("1234Q!W@E$R"), L"Not unique.", LINE_INFO());
+		}
 	};
 }

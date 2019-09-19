@@ -7,3 +7,4 @@ ArraysAndStrings/Debug
 ArraysAndStrings/Release
 **/*.VC.db
 **/*.VC.VC.opendb
+/UnitTest/UnitTest.vcxproj.user

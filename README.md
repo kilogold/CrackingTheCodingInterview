@@ -4,7 +4,7 @@ This is a **VC++** repository with my personal solutions to exercise questions f
 
 Requirements
 -------------
- - Visual Studio 2015
+ - Visual Studio 2019
  - Patience 
  
 How to use
