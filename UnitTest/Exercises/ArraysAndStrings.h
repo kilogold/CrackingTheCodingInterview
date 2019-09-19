@@ -1,5 +1,6 @@
 #pragma once
 #include <unordered_set>
+#include <unordered_map>
 
 namespace CTCI
 {
@@ -21,4 +22,29 @@ namespace CTCI
 		}
 		return true;
     }
+
+	bool CheckPermutation(const char* a, const char* b)
+	{
+		const size_t aLength = strlen(a);
+		const size_t bLength = strlen(b);
+
+		if (aLength != bLength)
+			return false;
+
+		std::unordered_map<char, int> look;
+
+		for(size_t i = 0; i < aLength; i++)
+		{
+			++look[a[i]];
+			--look[b[i]];
+		}
+
+		for (auto& entry : look)
+		{
+			if (entry.second != 0)
+				return false;
+		}
+
+		return true;
+	}
 }
