@@ -48,5 +48,22 @@ namespace Excercises
 			Assert::IsTrue(CTCI::IsPalindrome("RACECAR"), L"Is a palindrome");
 			Assert::IsFalse(CTCI::IsPalindrome("MIKELSEN"), L"Is not a palindrome");
 		}
+
+		TEST_METHOD(OneAway)
+		{
+			Assert::IsTrue(CTCI::OneAway("Hello", "Hello"));
+			Assert::IsFalse(CTCI::OneAway("Hello", "Facey"));
+			
+			Assert::IsFalse(CTCI::OneAway("", "Facey"));
+			Assert::IsTrue(CTCI::OneAway("Hello", "Hello!"));
+			Assert::IsFalse(CTCI::OneAway("Hello", "Hello!!"));
+		}
+
+		TEST_METHOD(Compress)
+		{
+			Assert::AreEqual(std::string("a3"), CTCI::Compress("aaa"));
+			Assert::AreEqual(std::string("a3b1c10d1"), CTCI::Compress("aaabccccccccccd"));
+			Assert::AreEqual(std::string("abc"), CTCI::Compress("abc"));
+		}
 	};
 }

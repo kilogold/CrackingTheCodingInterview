@@ -1,6 +1,8 @@
 #pragma once
 #include <unordered_set>
 #include <unordered_map>
+#include <sstream>
+#include <assert.h>
 
 namespace CTCI
 {
@@ -112,5 +114,68 @@ namespace CTCI
 			return true;
 
 		return false;
+	}
+
+	bool OneAway(const char* A, const char* B)
+	{
+		assert(A); assert(B);
+		const int aLen = static_cast<int>(strlen(A));
+		const int bLen = static_cast<int>(strlen(B));
+
+		if (abs(aLen - bLen) >= 2)
+			return false;
+
+		std::unordered_set<char> look;
+
+		auto proccessString = [&look](const char* str, int stringLength)
+		{
+			for (size_t i = 0; i < stringLength; ++i)
+			{
+				const auto key = str[i];
+				if (look.contains(key))
+				{
+					look.erase(key);
+				}
+				else
+				{
+					look.insert(key);
+				}
+			}
+		};
+
+		proccessString(A, aLen);
+		proccessString(B, bLen);
+		return look.size() <= 1;
+	}
+
+	std::string Compress(const std::string& in)
+	{
+		if (in.size() == 0)
+		{
+			return in;
+		}
+
+		std::stringstream cmpIn;
+		size_t count = 1;
+		char letter = in[0];
+
+		for (size_t i = 1; i < in.size(); ++i)
+		{
+			if (in[i] == letter)
+			{
+				++count;
+				continue;
+			}
+
+			cmpIn << letter << count;
+
+			count = 1;
+			letter = in[i];
+		}
+		
+		cmpIn << letter << count;
+
+		std::string cmpInString(std::move(cmpIn.str()));
+		return cmpInString.size() < in.size() ? cmpInString : in;
 	}
 }
